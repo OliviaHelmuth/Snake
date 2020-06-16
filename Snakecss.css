@@ -1,3 +1,28 @@
-/* #snakeCanvas {
-    border-style: solid;
-} */
+#footer i:hover {
+    color:;
+}
+#footer a {
+    text-decoration: none;
+}
+#playAgain {
+    background-color: #29A829;
+}
+#wrapper {
+    background-color: #efeeea;
+}
+#wrapper p {
+    font-size: 1.5rem;
+}
+#copyright {
+    background-color: #6C625A;
+    color: white;
+}
+.border {
+    border-radius: 5px;
+}
+.margin {
+    margin: 1rem;
+}
+.brown-font {
+    color:#6c625a;
+}
