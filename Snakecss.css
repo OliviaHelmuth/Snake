@@ -1,14 +1,23 @@
 #footer i:hover {
-    color:;
+    color:#393431;
 }
 #footer a {
     text-decoration: none;
 }
 #playAgain {
     background-color: #29A829;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+}
+#playAgain:hover {
+    background-color: #1d7b1d;
 }
 #wrapper {
     background-color: #efeeea;
+    padding: 2rem;
+}
+#wrapper h1 {
+    margin-bottom: 2rem;
 }
 #wrapper p {
     font-size: 1.5rem;
@@ -25,4 +34,10 @@
 }
 .brown-font {
     color:#6c625a;
+}
+#modalSnake button {
+    background-color: #29A829;
+}
+#modalSnake button:hover {
+    background-color: #1d7b1d!important;
 }

@@ -5,7 +5,8 @@ const snakeCanvasColor = "white";
 const snakeCanvasBorderColor = "#6c625a";
 const snakeColor = "#29A829";
 const foodColor = "#6c625a";
-let randomNum = 0;
+let randomNum1 = 0;
+let randomNum2 = 0;
 let Score = 0;
 let playerSpeed = 150;
 let snake = [
@@ -15,24 +16,24 @@ let snake = [
     { x: 120, y: 150 },
     { x: 110, y: 150 },
 ];
-let snakeFood = { x: randomNum, y: randomNum }; // always put after createFood()
+let snakeFood = { x: randomNum1, y: randomNum2 }; // always put after createFood()
 function createFood() {
-    randomNum = random10(0, snakeCanvas.width - 10);
-    snakeFood = { x: randomNum, y: randomNum }; // always put after createFood()
+    randomNum1 = random10(0, snakeCanvas.width - 10);
+    randomNum2 = random10(0, snakeCanvas.width - 10);
+    snakeFood = { x: randomNum1, y: randomNum2 }; // always put after createFood()
     ifFoodOnSnake();
 }
 function ifFoodOnSnake() {
     snake.forEach(snakePart => {
         if (snakePart.x == snakeFood.x) {
             createFood();
-            snakeFood = { x: randomNum, y: randomNum }; // always put after createFood()
+            snakeFood = { x: randomNum1, y: randomNum2 }; // always put after createFood()
         }
     });
 }
 function random10(min, max) {
     return Math.round((Math.random() * (max - min) + min) / 10) * 10;
 }
-createFood();
 function clearCanvas() {
     ctx.fillStyle = snakeCanvasColor;
     ctx.strokeStyle = snakeCanvasBorderColor;
@@ -57,8 +58,11 @@ function drawSnakePart(snakePart) {
     ctx.fillStyle = snakeColor;
     ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
 }
+
+let timeOut ;
+
 function main() {
-    setTimeout(function () {
+    timeOut = setTimeout(function () {
         clearCanvas();
         drawSnake();
         drawFood();
@@ -69,7 +73,12 @@ function main() {
         main();
     }, playerSpeed)
 }
-main();
+clearCanvas();
+drawSnake();
+createFood();
+drawFood();
+
+
 document.body.addEventListener("keydown", changeDirection);
 function changeDirection(e) {
     const LeftKey = 37;
@@ -81,24 +90,22 @@ function changeDirection(e) {
     const goingRight = dx === 10;
     const goingUp = dy === -10;
     const goingDown = dy === 10;
-
-    if (keyPressed == LeftKey && !goingRight) {
+    if ([LeftKey, RightKey, UpKey, DownKey].includes(keyPressed)) {
         e.preventDefault(); // without it, the website would scroll up and down on the arrow keys
+    }
+    if (keyPressed == LeftKey && !goingRight) {
         dx = -10;
         dy = 0;
     }
     if (keyPressed == RightKey && !goingLeft) {
-        e.preventDefault(); // without it, the website would scroll up and down on the arrow keys
         dx = 10;
         dy = 0;
     }
     if (keyPressed == UpKey && !goingDown) {
-        e.preventDefault(); // without it, the website would scroll up and down on the arrow keys
         dx = 0;
         dy = -10;
     }
     if (keyPressed == DownKey && !goingUp) {
-        e.preventDefault(); // without it, the website would scroll up and down on the arrow keys
         dx = 0;
         dy = 10;
     }
@@ -122,7 +129,8 @@ function checkIfTouchesItself() {
     for (i = 1; i < snake.length; i++) {
         if (snake[0].x == snake[i].x &&
             snake[0].y == snake[i].y) {
-            alert("GameOver!");
+            $("#snakeOutput").html("Game Over !");
+            $("#modalSnake").modal("show");
             gameOver = true;
         }
     }
@@ -130,7 +138,7 @@ function checkIfTouchesItself() {
 function ifSnakeAteFood() {
     if (snake[0].x === snakeFood.x && snake[0].y === snakeFood.y) {
         createFood();
-        snakeFood = { x: randomNum, y: randomNum }; // always put after createFood()
+        snakeFood = { x: randomNum1, y: randomNum2 }; // always put after createFood()
         appendSnake();
         Score = Score + 10;
         p.textContent = Score;
@@ -156,6 +164,7 @@ function newGame() {
     gameOver = false;
     Score = 0;
     p.textContent = Score;
+    clearTimeout(timeOut);
     createFood();
     main();
 }
