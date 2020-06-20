@@ -2,48 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake</title>
-    <link rel="stylesheet" href="./Snakecss.css">
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
-    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../../learn_jquery/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake</title>
+  <link rel="stylesheet" href="./Snakecss.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../../learn_jquery/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 
 <body>
-    <div class="container-fluid border" id="wrapper">
-        <div class="text-center">
-            <h1 class="margin">Snake</h1>
-            <p class="margin"> Score <span id="playerScore">0</span></p>
-            <canvas class="border margin" id="snakeCanvas" width="300" height="300">
-            </canvas>
-        </div>   
-        <div class="text-center">
-            <div><input class="border" type="text" name="" id="playerName" placeholder="enter your name"></div>
-            <button id="playAgain" type="button" class="margin btn btn-success">Start New Game !</button>
-        </div>
-        <div class="container">
-            <h2>Highscore</h2>
-            <div class="row align-items-center">
-            <table class="table col-6" id="highscoreTable">
-                <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Score</th>
-                  </tr>
-                </thead>
-                <tbody id="highscoreBody">
-                </tbody>
-              </table>
-              </div>
-        </div>
+  <div class="container-fluid border" id="wrapper">
+    <div class="text-center">
+      <h1 class="margin">Snake</h1>
+      <p class="margin"> Score <span id="playerScore">0</span></p>
+      <canvas class="border margin" id="snakeCanvas" width="300" height="300">
+      </canvas>
     </div>
-    <!-- modal for Snake -->
-    <div class="modal fade" id="modalSnake" tabindex="-1" role="dialog" aria-labelledby="modalSnakeTitle"
+    <div class="text-center">
+      <div><input class="border" type="text" name="" id="playerName" placeholder="enter your name"></div>
+      <button id="playAgain" type="button" class="margin btn btn-success">Start New Game !</button>
+    </div>
+    <div class="container">
+      <h2>Highscore</h2>
+      <div class="row align-items-center">
+        <table class="table col-6" id="highscoreTable">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Name</th>
+              <th scope="col">Score</th>
+            </tr>
+          </thead>
+          <tbody id="highscoreBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- modal for Snake -->
+  <div class="modal fade" id="modalSnake" tabindex="-1" role="dialog" aria-labelledby="modalSnakeTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -58,36 +58,36 @@
       </div>
     </div>
   </div>
-<!-- footer -->
-    <footer class="page-footer font-small" id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 py-5">
-                    <div class="sm-5 text-center">
-                        <!--Linkedin -->
-                        <a class="footer-icon" href="https://www.linkedin.com/in/olivia-h-a184731a3/" target="_blank">
-                            <i class="brown-font fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        <!--GitHub-->
-                        <a class="footer-icon" href="https://github.com/OliviaHelmuth" target="_blank">
-                            <i class="brown-font fab fa-github fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
-                        </a>
-                        <!-- Email -->
-                        <a class="footer-icon" href="mailto:Olivia.Helmuth@pm.me">
-                            <i class="brown-font far fa-envelope fa-lg white-text mr-md-5 mr-3 fa-2x">
-                            </i>
-                        </a>
-                        <span class="brown-font">Olivia.Helmuth@pm.me</span>
-                    </div>
-                </div>
-            </div>
+  <!-- footer -->
+  <footer class="page-footer font-small" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 py-5">
+          <div class="sm-5 text-center">
+            <!--Linkedin -->
+            <a class="footer-icon" href="https://www.linkedin.com/in/olivia-h-a184731a3/" target="_blank">
+              <i class="brown-font fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <!--GitHub-->
+            <a class="footer-icon" href="https://github.com/OliviaHelmuth" target="_blank">
+              <i class="brown-font fab fa-github fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
+            </a>
+            <!-- Email -->
+            <a class="footer-icon" href="mailto:Olivia.Helmuth@pm.me">
+              <i class="brown-font far fa-envelope fa-lg white-text mr-md-5 mr-3 fa-2x">
+              </i>
+            </a>
+            <span class="brown-font">Olivia.Helmuth@pm.me</span>
+          </div>
         </div>
-        <!-- Copyright -->
-        <div class="footer-copyright border text-center py-3" id="copyright">© 2020 Copyright </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- </div> -->
-    <script src="./Snakejs.js"></script>
+      </div>
+    </div>
+    <!-- Copyright -->
+    <div class="footer-copyright border text-center py-3" id="copyright">© 2020 Copyright </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- </div> -->
+  <script src="./Snakejs.js"></script>
 </body>
 
 </html>
