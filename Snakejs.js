@@ -7,8 +7,10 @@ const snakeColor = "#29A829";
 const foodColor = "#6c625a";
 let randomNum1 = 0;
 let randomNum2 = 0;
-let Score = 0;
 let playerSpeed = 150;
+let dx = 10;
+let dy = 0;
+let snakeFood = { x: randomNum1, y: randomNum2 }; // always put after createFood()
 let snake = [
     { x: 150, y: 150 }, // head of the snake
     { x: 140, y: 150 },
@@ -16,7 +18,9 @@ let snake = [
     { x: 120, y: 150 },
     { x: 110, y: 150 },
 ];
-let snakeFood = { x: randomNum1, y: randomNum2 }; // always put after createFood()
+function random10(min, max) {
+    return Math.round((Math.random() * (max - min) + min) / 10) * 10;
+}
 function createFood() {
     randomNum1 = random10(0, snakeCanvas.width - 10);
     randomNum2 = random10(0, snakeCanvas.width - 10);
@@ -25,14 +29,11 @@ function createFood() {
 }
 function ifFoodOnSnake() {
     snake.forEach(snakePart => {
-        if (snakePart.x == snakeFood.x) {
+        if (snakePart.x == snakeFood.x &&
+            snakePart.y == snakeFood.y) {
             createFood();
-            snakeFood = { x: randomNum1, y: randomNum2 }; // always put after createFood()
         }
     });
-}
-function random10(min, max) {
-    return Math.round((Math.random() * (max - min) + min) / 10) * 10;
 }
 function clearCanvas() {
     ctx.fillStyle = snakeCanvasColor;
@@ -40,8 +41,6 @@ function clearCanvas() {
     ctx.fillRect(0, 0, snakeCanvas.width, snakeCanvas.height);
     ctx.strokeRect(0, 0, snakeCanvas.width, snakeCanvas.height);
 }
-let dx = 10;
-let dy = 0;
 function drawFood() {
     ctx.fillStyle = foodColor;
     ctx.fillRect(snakeFood.x, snakeFood.y, 10, 10);
@@ -52,15 +51,12 @@ function advanceSnake() {
     snake.pop();
 }
 function drawSnake() {
-    snake.forEach(drawSnakePart);
+    snake.forEach(snakePart => {
+        ctx.fillStyle = snakeColor;
+        ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
+    });
 }
-function drawSnakePart(snakePart) {
-    ctx.fillStyle = snakeColor;
-    ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
-}
-
-let timeOut ;
-
+let timeOut;
 function main() {
     timeOut = setTimeout(function () {
         clearCanvas();
@@ -77,7 +73,6 @@ clearCanvas();
 drawSnake();
 createFood();
 drawFood();
-
 
 document.body.addEventListener("keydown", changeDirection);
 function changeDirection(e) {
@@ -120,6 +115,9 @@ function checkGameOver() {
             $("#snakeOutput").html("Game Over !");
             $("#modalSnake").modal("show");
             gameOver = true;
+            setLocalStorage();
+            copyIntoArray();
+            printHighscore();
         }
     }
     );
@@ -132,13 +130,16 @@ function checkIfTouchesItself() {
             $("#snakeOutput").html("Game Over !");
             $("#modalSnake").modal("show");
             gameOver = true;
+            setLocalStorage();
+            copyIntoArray();
+            printHighscore();
         }
     }
 }
+let Score = 0;
 function ifSnakeAteFood() {
-    if (snake[0].x === snakeFood.x && snake[0].y === snakeFood.y) {
+    if (snake[0].x == snakeFood.x && snake[0].y == snakeFood.y) {
         createFood();
-        snakeFood = { x: randomNum1, y: randomNum2 }; // always put after createFood()
         appendSnake();
         Score = Score + 10;
         p.textContent = Score;
@@ -167,4 +168,48 @@ function newGame() {
     clearTimeout(timeOut);
     createFood();
     main();
+    copyIntoArray();
+    printHighscore();
 }
+function setLocalStorage() {
+    let name = document.getElementById("playerName").value;
+    if (name == "") {
+        name = "anonymous"
+    }
+    if (localStorage.getItem(name) === null ||
+        localStorage.getItem(name) < Score) {
+        localStorage.setItem(name, Score);
+    }
+}
+function printHighscore() {
+    const body = document.getElementById("highscoreBody");
+    let newHighscore = "";
+    for (let i = 0; i < sortable.length; i++) {
+        let key = sortable[i][0];
+        let value = sortable[i][1];
+        newHighscore += `<tr>
+            <th>${i + 1}</th>
+            <td >${key}</td>
+            <td>${value}</td>
+            </tr>`
+    }
+    body.innerHTML = newHighscore;
+    console.log(sortable)
+}
+let sortable = [];
+function copyIntoArray() {
+    sortable = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        let value = localStorage.getItem(key);
+        sortable.push([key, value]);
+        sortArray();
+    }
+}
+function sortArray() {
+    sortable.sort(function (a, b) {
+        return b[1] - a[1];
+    });
+}
+copyIntoArray();
+printHighscore();

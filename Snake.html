@@ -22,7 +22,24 @@
             </canvas>
         </div>   
         <div class="text-center">
+            <div><input class="border" type="text" name="" id="playerName" placeholder="enter your name"></div>
             <button id="playAgain" type="button" class="margin btn btn-success">Start New Game !</button>
+        </div>
+        <div class="container">
+            <h2>Highscore</h2>
+            <div class="row align-items-center">
+            <table class="table col-6" id="highscoreTable">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Score</th>
+                  </tr>
+                </thead>
+                <tbody id="highscoreBody">
+                </tbody>
+              </table>
+              </div>
         </div>
     </div>
     <!-- modal for Snake -->
