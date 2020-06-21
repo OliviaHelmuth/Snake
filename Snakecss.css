@@ -41,3 +41,7 @@
 #modalSnake button:hover {
     background-color: #1d7b1d!important;
 }
+.footer-icon {
+    margin-left: 1rem ;
+    margin-right: 1rem ;
+}
