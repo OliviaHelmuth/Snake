@@ -1,47 +1,55 @@
 #footer i:hover {
-    color:#393431;
+  color: #393431;
 }
 #footer a {
-    text-decoration: none;
+  text-decoration: none;
 }
 #playAgain {
-    background-color: #29A829;
-    margin-top: 2rem;
-    margin-bottom: 4rem;
+  background-color: #29a829;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
 }
 #playAgain:hover {
-    background-color: #1d7b1d;
+  background-color: #1d7b1d;
 }
 #wrapper {
-    background-color: #efeeea;
-    padding: 2rem;
+  background-color: #efeeea;
+  padding: 2rem;
 }
 #wrapper h1 {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 #wrapper p {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
+}
+#wrapper h2 {
+  margin-bottom: 2rem;
 }
 #copyright {
-    background-color: #6C625A;
-    color: white;
+  background-color: #6c625a;
+  color: white;
 }
 .border {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 .margin {
-    margin: 1rem;
+  margin: 1rem;
 }
 .brown-font {
-    color:#6c625a;
+  color: #6c625a;
 }
 #modalSnake button {
-    background-color: #29A829;
+  background-color: #29a829;
 }
 #modalSnake button:hover {
-    background-color: #1d7b1d!important;
+  background-color: #1d7b1d !important;
 }
 .footer-icon {
-    margin-left: 1rem ;
-    margin-right: 1rem ;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+@media (max-width: 432px) {
+  #footer i {
+    margin-bottom: 1rem;
+  }
 }

@@ -1,4 +1,7 @@
 # Snake
+
+## <a href="https://oh-snake.netlify.app/snake.html" target="_blank">Live Demo</a>
+
 a simple snake game with a local storage based highscore implementation
 
 <img src="./Snake.gif" width="400">
