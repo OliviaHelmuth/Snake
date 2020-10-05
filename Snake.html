@@ -20,6 +20,14 @@
   <body>
     <div class="container-fluid border" id="wrapper">
       <div class="text-center">
+        <div id="badge-container">
+          <div id="badge" class="alert alert-warning" role="alert">
+            This game is a browser game and just supports controls via a
+            physical keyboard ! <br />
+            Click Start New Game to start the game. <br />
+            To navigate the snake use the arrow keys.
+          </div>
+        </div>
         <h1 class="margin">Snake</h1>
         <p class="margin">Score <span id="playerScore">0</span></p>
         <canvas class="border margin" id="snakeCanvas" width="300" height="300">
@@ -32,7 +40,7 @@
             type="text"
             name=""
             id="playerName"
-            placeholder="enter your name"
+            placeholder="enter your name..."
           />
         </div>
         <button id="playAgain" type="button" class="margin btn btn-success">

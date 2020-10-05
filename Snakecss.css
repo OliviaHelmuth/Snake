@@ -53,3 +53,10 @@
     margin-bottom: 1rem;
   }
 }
+#badge {
+  width: 70%;
+}
+#badge-container {
+  display: flex;
+  justify-content: center;
+}
