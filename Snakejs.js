@@ -59,6 +59,7 @@ function drawSnake() {
 let timeOut;
 function main() {
     timeOut = setTimeout(function () {
+        changingDirection = false;
         clearCanvas();
         drawSnake();
         drawFood();
@@ -88,6 +89,10 @@ function changeDirection(e) {
     if ([LeftKey, RightKey, UpKey, DownKey].includes(keyPressed)) {
         e.preventDefault(); // without it, the website would scroll up and down on the arrow keys
     }
+
+    if (changingDirection) return;
+    changingDirection = true;
+
     if (keyPressed == LeftKey && !goingRight) {
         dx = -10;
         dy = 0;
